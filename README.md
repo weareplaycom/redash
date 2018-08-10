@@ -1,3 +1,21 @@
+# PLAYCOM FORK
+
+This is a FORK from the ReDash repository.
+
+Our version lives on the `playcom` branch, which is kept in sync with their latest
+master (if stable) when possible.
+
+To update the DB, the easiest procedure is:
+
+ - Deploy the new version on `dev`
+ - Use `kubectl -n dev exec -it playcom-redash-xxxx redash-server`
+ - Run: `bin/run ./manage.py db upgrade`
+
+> NOTE: Generating the docker image takes a few minutes :)
+
+----
+----
+
 <p align="center">
   <img title="Redash" src='https://redash.io/assets/images/logo.png' width="200px"/>
 </p>
@@ -34,7 +52,7 @@ Try out the [demo instance](http://demo.redash.io/) (login with any Google accou
 
 ## Supported Data Sources
 
-Redash supports more than 25 [data sources](https://redash.io/help/data-sources/supported-data-sources). 
+Redash supports more than 25 [data sources](https://redash.io/help/data-sources/supported-data-sources).
 
 ## Getting Help
 
