@@ -64,8 +64,14 @@ def create_tables_from_query_ids(user, connection, query_ids):
     for query_id in set(query_ids):
         query = _load_query(user, query_id)
 
-        results, error = query.data_source.query_runner.run_query(
-            query.query_text, user)
+        #PLAYCOM: If there is a recent result computed just use it!
+        qr = models.QueryResult.get_latest(query.data_source, query.query_text, 3600)
+        if qr:
+            results, error = qr.data, None
+        else:
+            logger.info('No recent results for query %d, running query...', query_id)
+            results, error = query.data_source.query_runner.run_query(
+                query.query_text, user)
 
         if error:
             raise Exception(
