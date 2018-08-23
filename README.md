@@ -1,3 +1,5 @@
+> :warning: :warning: :warning: **DEPRECATED** see https://github.com/weareplaycom/infra repo
+
 # PLAYCOM FORK
 
 This is a FORK from the ReDash repository.
